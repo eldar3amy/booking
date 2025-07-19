@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>أ/ محمد سعيد يونس | الدرعمي</title>
+    <!-- IBM Plex Arabic & Amiri Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Arabic:wght@400;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    
+
+    <style>
+        :root {
+            --burgundy: #800020;
+            --black: #000;
+            --white: #fff;
+            --radius: 8px;
+            --shadow: 0 8px 32px rgba(0,0,0,0.12);
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 16px rgba(128,0,32,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 2rem;
+            transition: background .2s, box-shadow .2s;
+        }
+        body.dark .navbar {
+            background: #23232b;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+        }
+        .navbar-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-logo {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--burgundy);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            transition: color .2s;
+        }
+        body.dark .navbar-logo {
+            color: var(--white);
+        }
+        .navbar-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .navbar-link {
+            font-family: var(--font-main);
+            font-size: 1.05rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.3rem 0.7rem;
+            border-radius: var(--radius);
+            transition: background .2s, color .2s;
+        }
+        .navbar-link:hover, .navbar-link.active {
+            background: var(--burgundy);
+            color: var(--white);
+        }
+        body.dark .navbar-link {
+            color: var(--white);
+        }
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--burgundy);
+            cursor: pointer;
+        }
+        body.dark .navbar-toggle {
+            color: var(--white);
+        }
+        @media (max-width: 900px) {
+            .navbar-container {
+                padding: 0 0.5rem;
+            }
+        }
+        @media (max-width: 700px) {
+            .navbar-links {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                left: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1.5rem 0;
+                box-shadow: 0 8px 32px rgba(128,0,32,0.08);
+                display: none;
+            }
+            body.dark .navbar-links {
+                background: #23232b;
+            }
+            .navbar-links.open {
+                display: flex;
+            }
+            .navbar-toggle {
+                display: block;
+            }
+        }
+        /* Section: Why Us */
+        .whyus-section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2.5rem 1rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            font-family: var(--font-main);
+        }
+        body.dark .whyus-section {
+            background: #23232b;
+            color: var(--text-dark);
+        }
+        .whyus-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--burgundy);
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            text-align: center;
+        }
+        .whyus-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .whyus-item {
+            flex: 1 1 220px;
+            min-width: 200px;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 12px rgba(128,0,32,0.06);
+            padding: 1.2rem 1rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: box-shadow .2s, transform .2s;
+        }
+        .whyus-item:hover {
+            box-shadow: var(--glow);
+            transform: translateY(-4px) scale(1.03);
+        }
+        body.dark .whyus-item {
+            background: #181820;
+            color: var(--text-dark);
+        }
+        @media (max-width: 700px) {
+            .whyus-list {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+        }
+        /* Section: About */
+        .about-section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2.5rem 1rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            font-family: var(--font-main);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        body.dark .about-section {
+            background: #23232b;
+            color: var(--text-dark);
+        }
+        .about-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--burgundy);
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            text-align: center;
+        }
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--text-light);
+            font-weight: 400;
+            text-align: center;
+        }
+        body.dark .about-text {
+            color: var(--text-dark);
+        }
+            --transition: 0.3s cubic-bezier(.4,0,.2,1);
+            --font-main: 'IBM Plex Arabic', 'Amiri', serif;
+            --font-title: 'Amiri', 'IBM Plex Arabic', serif;
+            --gradient: linear-gradient(135deg, var(--burgundy), var(--black));
+            --footer-gradient: linear-gradient(135deg, var(--burgundy), var(--black));
+            --glow: 0 0 16px var(--burgundy);
+            --bg-light: #f7f7fa;
+            --bg-dark: #181820;
+            --text-light: #222;
+            --text-dark: #fff;
+        }
+        html {
+            scroll-behavior: smooth;
+            background: var(--bg-light);
+            color: var(--text-light);
+            font-family: var(--font-main);
+            transition: background .3s, color .3s;
+        }
+        body.dark {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+        /* Apple-style loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity .6s;
+        }
+        .apple-loader {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top: 4px solid var(--white);
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3rem;
+            max-width: 900px;
+            width: 100%;
+            justify-content: center;
+        }
+        .hero-img {
+            width: 160px;
+            height: 160px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition);
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius);
+            display: block;
+        }
+        .hero-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 16px 48px rgba(128,0,32,0.18);
+        }
+        .hero-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.2rem;
+        }
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin: 0;
+            letter-spacing: 0.02em;
+        }
+        .hero-subtitle {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            color: var(--white);
+            opacity: 0.85;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        .hero-cta {
+            margin-top: 1.2rem;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.2rem;
+            font-family: var(--font-main);
+            background: var(--burgundy);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            box-shadow: 0 0 0 rgba(128,0,32,0.2);
+            cursor: pointer;
+            transition: box-shadow var(--transition), transform var(--transition), background .2s;
+            font-weight: 700;
+            outline: none;
+            position: relative;
+        }
+        .hero-cta:hover, .hero-cta:focus {
+            box-shadow: var(--glow);
+            transform: scale(1.05);
+            background: #a0002a;
+        }
+        /* Responsive Hero */
+        @media (max-width: 700px) {
+            .hero-content {
+                flex-direction: row-reverse;
+                gap: 1.5rem;
+                align-items: center;
+                justify-content: center;
+            }
+            .hero-img {
+                width: 100px;
+                height: 100px;
+            }
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                gap: 1.2rem;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-text {
+                align-items: center;
+            }
+            .hero-cta {
+                width: 100%;
+            }
+        }
+        /* Booking Section */
+        .booking-section {
+            background: var(--bg-light);
+            padding: 3rem 1rem 2rem 1rem;
+            max-width: 600px;
+            margin: -4rem auto 2rem auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+        body.dark .booking-section {
+            background: #23232b;
+            color: var(--text-dark);
+        }
+        .booking-title {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--burgundy);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--burgundy);
+            margin-bottom: 0.2rem;
+            font-family: var(--font-main);
+        }
+        input, select {
+            padding: 0.7rem 1rem;
+            border-radius: var(--radius);
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            font-family: var(--font-main);
+            background: var(--white);
+            transition: border-color .2s;
+            outline: none;
+        }
+        body.dark input, body.dark select {
+            background: #181820;
+            color: var(--text-dark);
+            border: 1px solid #444;
+        }
+        input:focus, select:focus {
+            border-color: var(--burgundy);
+        }
+        .booking-submit {
+            margin-top: 1.2rem;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            background: var(--burgundy);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            box-shadow: 0 0 0 rgba(128,0,32,0.2);
+            cursor: pointer;
+            transition: box-shadow var(--transition), transform var(--transition), background .2s;
+            font-weight: 700;
+            outline: none;
+            position: relative;
+        }
+        .booking-submit:hover, .booking-submit:focus {
+            box-shadow: var(--glow);
+            transform: scale(1.05);
+            background: #a0002a;
+        }
+        /* Schedule Section */
+        .schedule-section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem 1rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            font-family: var(--font-main);
+        }
+        body.dark .schedule-section {
+            background: #23232b;
+            color: var(--text-dark);
+        }
+        .schedule-title {
+            font-family: var(--font-title);
+            font-size: 1.7rem;
+            color: var(--burgundy);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .schedule-center {
+            margin-bottom: 2rem;
+        }
+        .center-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            margin-bottom: 0.7rem;
+            font-family: var(--font-title);
+        }
+        .group-list {
+            margin-bottom: 1.2rem;
+            padding-right: 1.2rem;
+        }
+        .group-item {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #222;
+            font-family: var(--font-main);
+        }
+        body.dark .group-item {
+            color: var(--text-dark);
+        }
+        /* Contact Section */
+        .contact-section {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        body.dark .contact-section {
+            background: #23232b;
+            color: var(--text-dark);
+        }
+        .contact-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--burgundy);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .contact-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--gradient);
+            transition: transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 2px 8px rgba(128,0,32,0.12);
+            cursor: pointer;
+        }
+        .contact-icon:hover {
+            transform: scale(1.12);
+            box-shadow: var(--glow);
+        }
+        .contact-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--white);
+        }
+        /* Footer */
+        footer {
+            background: var(--footer-gradient);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem 1rem 1rem;
+            font-size: 1rem;
+            font-family: var(--font-main);
+            border-top-left-radius: var(--radius);
+            border-top-right-radius: var(--radius);
+            margin-top: 2rem;
+        }
+        /* Dark/Light Toggle */
+        .toggle-mode {
+            position: fixed;
+            left: 1.2rem;
+            top: 1.2rem;
+            z-index: 100;
+            background: var(--white);
+            color: var(--burgundy);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            border: none;
+            font-size: 1.3rem;
+            transition: background .2s, color .2s;
+        }
+        body.dark .toggle-mode {
+            background: #23232b;
+            color: var(--white);
+        }
+        /* Smooth Scroll */
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #eee;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--burgundy);
+            border-radius: 8px;
+        }
+        .email-icon {
+            background-color: #800020;
+            text-decoration: none;
+            color: white;
+            border-radius: 20%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Apple-style Loader -->
+    <div id="loader">
+        <div class="apple-loader"></div>
+    </div>
+    <!-- Dark/Light Mode Toggle -->
+    <button class="toggle-mode" id="toggleMode" aria-label="تبديل الوضع">
+        🌙
+    </button>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-img">
+                <img src="mr.jpg" alt="أ/ محمد سعيد يونس">
+            </div>
+            <div class="hero-text">
+                <h1 class="hero-title">أ/ محمد سعيد يونس</h1>
+                <div class="hero-subtitle">الدرعمي</div>
+                <a href="#booking" class="hero-cta">احجز الآن</a>
+            </div>
+        </div>
+    </section>
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-title">احجز الآن</div>
+        <form class="booking-form" id="bookingForm" autocomplete="off">
+            <div class="form-group">
+                <label for="studentName">الاسم الثلاثي</label>
+                <input type="text" id="studentName" name="studentName" required>
+            </div>
+            <div class="form-group">
+                <label for="studentPhone">رقم هاتف الطالب</label>
+                <input type="tel" id="studentPhone" name="studentPhone" required pattern="^01[0-9]{9}$" placeholder="01XXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label for="parentPhone">رقم ولي الأمر</label>
+                <input type="tel" id="parentPhone" name="parentPhone" required pattern="^01[0-9]{9}$" placeholder="01XXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label for="grade">المرحلة الدراسية</label>
+                <select id="grade" name="grade" required>
+                    <option value="">اختر المرحلة</option>
+                    <option value="Grade 1 Prep">الصف الأول الإعدادي</option>
+                    <option value="Grade 2 Prep">الصف الثاني الإعدادي</option>
+                    <option value="Grade 3 Prep">الصف الثالث الإعدادي</option>
+                    <option value="Grade 1 Secondary">الصف الأول الثانوي</option>
+                    <option value="Grade 2 Secondary">الصف الثاني الثانوي</option>
+                    <option value="Grade 3 Secondary">الصف الثالث الثانوي</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="center">المركز</label>
+                <select id="center" name="center" required>
+                    <option value="">اختر المركز</option>
+                    <option value="النخبة (القلج)">النخبة (القلج)</option>
+                    <option value="النخبة (العبور)">النخبة (العبور)</option>
+                    <option value="الدرعمي (الخانكة)">الدرعمي (الخانكة)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="group">اختر المجموعة</label>
+                <select id="group" name="group" required>
+                    <option value="">اختر المجموعة</option>
+                </select>
+            </div>
+            <button type="submit" class="booking-submit">إرسال عبر واتساب</button>
+        </form>
+    </section>
+   
+    </section>
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-title">تواصل معنا</div>
+        <div class="contact-icons">
+            <a class="contact-icon" href="https://wa.me/201558224765" target="_blank" aria-label="واتساب">
+                <svg viewBox="0 0 32 32"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.697 4.604 2.018 6.563L4 29l7.652-2.004A12.94 12.94 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.97 0-3.89-.573-5.527-1.658l-.393-.25-4.543 1.19 1.212-4.43-.256-.4A9.93 9.93 0 0 1 6 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.07-7.43c-.276-.138-1.63-.805-1.882-.897-.252-.092-.435-.138-.618.138-.184.276-.71.897-.87 1.083-.161.184-.322.207-.598.069-.276-.138-1.165-.429-2.22-1.366-.82-.731-1.375-1.634-1.537-1.91-.161-.276-.017-.425.121-.563.124-.123.276-.322.414-.483.138-.161.184-.276.276-.46.092-.184.046-.345-.023-.483-.069-.138-.618-1.497-.847-2.05-.223-.537-.45-.464-.618-.472l-.527-.009c-.184 0-.483.069-.737.345-.253.276-.966.945-.966 2.304 0 1.359.99 2.676 1.127 2.863.138.184 1.948 2.98 4.724 4.057.661.285 1.176.456 1.578.584.663.211 1.267.181 1.743.11.532-.079 1.63-.666 1.862-1.308.23-.643.23-1.194.161-1.308-.069-.115-.253-.184-.529-.322z"/></svg>
+            </a>
+            <a class="contact-icon" href="https://instagram.com/" target="_blank" aria-label="انستجرام">
+                <svg viewBox="0 0 32 32"><path d="M16 7c2.757 0 3.09.01 4.174.06 1.08.05 1.668.22 2.06.37.49.19.84.42 1.21.79.37.37.6.72.79 1.21.15.39.32.98.37 2.06.05 1.084.06 1.417.06 4.174s-.01 3.09-.06 4.174c-.05 1.08-.22 1.668-.37 2.06-.19.49-.42.84-.79 1.21-.37.37-.72.6-1.21.79-.39.15-.98.32-2.06.37-1.084.05-1.417.06-4.174.06s-3.09-.01-4.174-.06c-1.08-.05-1.668-.22-2.06-.37-.49-.19-.84-.42-1.21-.79-.37-.37-.6-.72-.79-1.21-.15-.39-.32-.98-.37-2.06C7.01 19.09 7 18.757 7 16s.01-3.09.06-4.174c.05-1.08.22-1.668.37-2.06.19-.49.42-.84.79-1.21.37-.37.72-.6 1.21-.79.39-.15.98-.32 2.06-.37C12.91 7.01 13.243 7 16 7zm0-2C13.203 5 12.837 5.01 11.737 5.06c-1.1.05-1.85.22-2.49.47-.67.26-1.24.61-1.81 1.18-.57.57-.92 1.14-1.18 1.81-.25.64-.42 1.39-.47 2.49C5.01 12.837 5 13.203 5 16c0 2.797.01 3.163.06 4.263.05 1.1.22 1.85.47 2.49.26.67.61 1.24 1.18 1.81.57.57 1.14.92 1.81 1.18.64.25 1.39.42 2.49.47C12.837 26.99 13.203 27 16 27c2.797 0 3.163-.01 4.263-.06 1.1-.05 1.85-.22 2.49-.47.67-.26 1.24-.61 1.81-1.18.57-.57.92-1.14 1.18-1.81.25-.64.42-1.39.47-2.49.05-1.1.06-1.466.06-4.263 0-2.797-.01-3.163-.06-4.263-.05-1.1-.22-1.85-.47-2.49-.26-.67-.61-1.24-1.18-1.81-.57-.57-1.14-.92-1.81-1.18-.64-.25-1.39-.42-2.49-.47C19.163 5.01 18.797 5 16 5zm0 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0 10a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.5-10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
+            </a>
+            <a class="contact-icon" href="https://www.facebook.com/share/1EhdPSwqhf/" target="_blank" aria-label="فيسبوك">
+                <svg viewBox="0 0 32 32"><path d="M29 16c0-7.18-5.82-13-13-13S3 8.82 3 16c0 6.48 4.84 11.83 11.13 12.82v-9.07H9.7v-3.75h4.43v-2.86c0-4.38 2.62-6.8 6.64-6.8 1.93 0 3.95.34 3.95.34v4.34h-2.23c-2.2 0-2.88 1.36-2.88 2.76v2.22h4.9l-.78 3.75h-4.12v9.07C27.16 27.83 32 22.48 32 16z"/></svg>
+            </a>
+            <a class="contact-icon" href="https://youtube.com/channel/UC5adSKDEHn_B_2vxKnVnxNA?si=tBz0Vc7ScVyJdacb" target="_blank" aria-label="يوتيوب">
+                <svg viewBox="0 0 32 32"><path d="M31.67 9.27a3.99 3.99 0 0 0-2.81-2.82C26.36 6 16 6 16 6s-10.36 0-12.86.45a3.99 3.99 0 0 0-2.81 2.82C0 11.77 0 16 0 16s0 4.23.33 6.73a3.99 3.99 0 0 0 2.81 2.82C5.64 26 16 26 16 26s10.36 0 12.86-.45a3.99 3.99 0 0 0 2.81-2.82C32 20.23 32 16 32 16s0-4.23-.33-6.73zM12.8 21.2V10.8l8.4 5.2-8.4 5.2z"/></svg>
+            </a>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        جميع الحقوق محفوظة &copy; 2024 أ/ محمد سعيد يونس (الدرعمي)
+    </footer>
+    <script>
+        // Apple-style loader
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loader').style.display = 'none';
+                }, 600);
+            }, 900);
+        });
+
+        // Dark/Light Mode
+        const toggleBtn = document.getElementById('toggleMode');
+        function setMode(mode) {
+            if(mode === 'dark') {
+                document.body.classList.add('dark');
+                toggleBtn.textContent = '☀️';
+                localStorage.setItem('mode', 'dark');
+            } else {
+                document.body.classList.remove('dark');
+                toggleBtn.textContent = '🌙';
+                localStorage.setItem('mode', 'light');
+            }
+        }
+        toggleBtn.onclick = function() {
+            setMode(document.body.classList.contains('dark') ? 'light' : 'dark');
+        };
+        if(localStorage.getItem('mode') === 'dark') setMode('dark');
+
+        // Dynamic Group Dropdown
+        const groupData = {
+            "النخبة (القلج)": {
+                "Grade 1 Secondary": [
+                    "مجموعة 1: السبت 11:00 – 12:30 | الثلاثاء 2:00 – 3:00",
+                    "مجموعة 2: السبت 12:30 – 2:00 | الثلاثاء 3:00 – 4:00"
+                ],
+                "Grade 2 Secondary": [
+                    "مجموعة1: السبت 2:00 – 3:30 | الثلاثاء 4:00 – 5:00",
+                    "مجموعة 2: السبت 3:30 – 5:00 | الثلاثاء 5:00 – 6:00"
+                ],
+                "Grade 1 Prep": [
+                    "مجموعة 1: السبت 5:00 – 6:30 | الثلاثاء 6:00 – 7:00"
+                ],
+                "Grade 2 Prep": [
+                    "مجموعة 2: السبت 6:30 – 8:00 | الثلاثاء 7:00 – 8:00"
+                ],
+                "Grade 3 Secondary": [
+                    "مجموعة 1: الاثنين 11:00 – 1:00 | الخميس 11:00 – 1:00",
+                    "مجموعة 2: الاثنين 1:00 – 3:00 | الخميس 1:00 – 3:00"
+                ],
+                "Grade 3 Prep": [
+                    "مجموعة1: الاثنين 6:00 – 7:30 | الخميس 6:00 – 7:30",
+                    "مجموعة 2: الاثنين 7:30 – 9:00 | الخميس 7:30 – 9:00"
+                ]
+            },
+            "النخبة (العبور)": {
+                "Grade 1 Secondary": [
+                    "مجموعة 1: السبت 11:00 – 12:30 | الثلاثاء 2:00 – 3:00"
+                ],
+                "Grade 2 Secondary": [
+                    "مجموعة 2: السبت 12:30 – 2:00 | الثلاثاء 4:00 – 4:00"
+                ],
+                "Grade 1 Prep": [
+                    "مجموعة 3: السبت 5:00 – 6:30 | الثلاثاء 6:00 – 7:00"
+                ],
+                "Grade 2 Prep": [
+                    "مجموعة 4: السبت 6:30 – 8:00 | الثلاثاء 7:00 – 8:00"
+                ],
+                "Grade 3 Secondary": [
+                    "مجموعة 5: الاثنين 11:00 – 13:00 | الخميس 11:00 – 13:00"
+                ],
+                "Grade 3 Prep": [
+                    "مجموعة 6: الاثنين 6:00 – 7:30 | الخميس 6:00 – 7:30"
+                ]
+            },
+            "الدرعمي (الخانكة)": {
+                "Grade 3 Secondary": [
+                    "مجموعة 1: الأحد 12:00 – 2:00 | الأربعاء 12:00 – 2:00"
+                ],
+                "Grade 2 Secondary": [
+                    "مجموعة 2: الأحد 2:00 – 3:30 | الأربعاء 2:00 – 3:30"
+                ],
+                "Grade 1 Secondary": [
+                    "مجموعة 3: الأحد 3:30 – 5:00 | الأربعاء 3:30 – 5:00"
+                ],
+                "Grade 1 Prep": [
+                    "مجموعة 4: الأحد 5:00 – 6:00 | الأربعاء 5:00 – 6:00"
+                ],
+                "Grade 2 Prep": [
+                    "مجموعة 5: الأحد 6:00 – 7:00 | الأربعاء 6:00 – 7:00"
+                ],
+                "Grade 3 Prep": [
+                    "مجموعة 6: الأحد 7:00 – 8:30 | الأربعاء 7:00 – 8:30"
+                ]
+            }
+        };
+        const centerSelect = document.getElementById('center');
+        const gradeSelect = document.getElementById('grade');
+        const groupSelect = document.getElementById('group');
+        function updateGroups() {
+            const center = centerSelect.value;
+            const grade = gradeSelect.value;
+            groupSelect.innerHTML = '<option value="">اختر المجموعة</option>';
+            if(center && grade && groupData[center] && groupData[center][grade]) {
+                groupData[center][grade].forEach(g => {
+                    const opt = document.createElement('option');
+                    opt.value = g;
+                    opt.textContent = g;
+                    groupSelect.appendChild(opt);
+                });
+            }
+        }
+        centerSelect.addEventListener('change', updateGroups);
+        gradeSelect.addEventListener('change', updateGroups);
+
+        // WhatsApp Integration
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('studentName').value.trim();
+            const studentPhone = document.getElementById('studentPhone').value.trim();
+            const parentPhone = document.getElementById('parentPhone').value.trim();
+            const grade = gradeSelect.options[gradeSelect.selectedIndex].text;
+            const center = centerSelect.options[centerSelect.selectedIndex].text;
+            const group = groupSelect.options[groupSelect.selectedIndex].text;
+            const msg = `الاسم : ${name}\nرقم الهاتف : ${studentPhone}\nرقم ولي الأمر : ${parentPhone}\nالصف الدراسي : ${grade}\nالمركز : ${center}\nالمجموعة : ${group}`;
+            const url = `https://wa.me/201558224765?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    e.preventDefault();
+                    target.scrollIntoView({behavior: 'smooth'});
+                }
+            });
+        });
+    </script>
+    <div class="me">Developed By: Yasin Moaawed</div>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=moaawed11@gmail.com" class="email-icon">
+  <i class="fas fa-envelope"></i> email
+</a>
+<a href="https://wa.me/+201068685494" class="email-icon">
+  <i class="fab fa-whatsapp"></i> WhatsApp</a>
+</body>
+</html>
